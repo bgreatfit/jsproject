@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+</head>
+<body>
+
+
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+    <form enctype="multipart/form-data" name="cltinform0" method="post" action="">
+          &nbsp;&nbsp;Accept:<input type="radio" checked name="dvaction" value="1" > &nbsp;Reject:<input type="radio"  name="dvaction" value="0" >
+          <button onclick="voucher_res(document.forms.cltinform0)">SUBMIT</button>
+      </form>
+
+  <style>
+    html {
+      background:#018DED url(http://unsplash.it/1500/1000?image=881&blur=50);
+      background-size:cover;
+      font-family:'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display:flex;
+      flex:1;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .clock {
+      width: 30rem;
+      height: 30rem;
+      border:20px solid white;
+      border-radius:50%;
+      margin:50px auto;
+      position: relative;
+      padding:2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px); /* account for the height of the clock hands */
+    }
+
+    .hand {
+      width:50%;
+      height:6px;
+      background:black;
+      position: absolute;
+      top:50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition: all 0.05s;
+    transition-timing-function: cubic-bezier(0, 3.6, 0.58, 1);
+    }
+
+  </style>
+
+  <script>
+      const secondHand = document.querySelector('.second-hand');
+      const minHand = document.querySelector('.min-hand');
+      const hourHand = document.querySelector('.hour-hand');
+
+      function setDate()
+  {
+      const now = new Date();
+      const second = now.getSeconds();
+      const min = now.getMinutes();
+      const hour = now.getHours();
+      console.log(second);
+      const secondDeg = ((second/60)*360) +90;
+      const minDeg = ((min/60)*360) +90;
+      const hourDeg = ((hour/12)*360) +90;
+      secondHand.style.transform=`rotate(${secondDeg}deg)`;
+      minHand.style.transform=`rotate(${minDeg}deg)`;
+      hourHand.style.transform=`rotate(${hourDeg}deg)`;
+
+  }
+  setInterval(setDate,1000);
+
+      function voucher_res(lform,dvoucher){
+          alert(lform.dvaction.value);
+          let chok;
+          if(lform.dvaction.value==0)
+          {
+               chok = confirm("You are about to REJECT This  DischargeVoucher");
+
+               if(chok){
+                   chok1 = confirm("Are you Sure you want to continue");
+                   if(chok1){
+                       alert('Reject') ;
+
+                   }
+               }
+
+          }else{
+              chok = confirm("You are about to ACCEPT This  DischargeVoucher");
+              if(chok){
+                  chok1 = confirm("Are you Sure you want to continue");
+                  alert(chok1);
+                  return false;
+                  if(chok1)
+                  {
+                      alert('Accepted') ;
+
+                  }
+              }
+
+          }
+          let chok1;
+          if (act = 'terminate') {
+              if (chok) {
+                  chok1 = confirm("Are you Sure you want to continue");
+                  (chok1) ? postnewwin2(lform, 'iesclient.php', '', pact, '', '', '') : '';
+              }
+
+          }
+
+      }
+  </script>
+</body>
+</html>
