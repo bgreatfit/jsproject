@@ -72,8 +72,19 @@
     }
 
   </style>
-
+<form>
+    <select>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+        <option>V</option>
+    </select>
+</form>
   <script>
+      //location.replace("googloe.com");
+      const select = document.querySelectorAll('select');
+      console.log(select);
+      select.addEventListener("onchange",sayHello);
       const secondHand = document.querySelector('.second-hand');
       const minHand = document.querySelector('.min-hand');
       const hourHand = document.querySelector('.hour-hand');
@@ -94,46 +105,11 @@
 
   }
   setInterval(setDate,1000);
+function sayHello()
+{
+    alert('hello');
+}
 
-      function voucher_res(lform,dvoucher){
-          alert(lform.dvaction.value);
-          let chok;
-          if(lform.dvaction.value==0)
-          {
-               chok = confirm("You are about to REJECT This  DischargeVoucher");
-
-               if(chok){
-                   chok1 = confirm("Are you Sure you want to continue");
-                   if(chok1){
-                       alert('Reject') ;
-
-                   }
-               }
-
-          }else{
-              chok = confirm("You are about to ACCEPT This  DischargeVoucher");
-              if(chok){
-                  chok1 = confirm("Are you Sure you want to continue");
-                  alert(chok1);
-                  return false;
-                  if(chok1)
-                  {
-                      alert('Accepted') ;
-
-                  }
-              }
-
-          }
-          let chok1;
-          if (act = 'terminate') {
-              if (chok) {
-                  chok1 = confirm("Are you Sure you want to continue");
-                  (chok1) ? postnewwin2(lform, 'iesclient.php', '', pact, '', '', '') : '';
-              }
-
-          }
-
-      }
   </script>
 </body>
 </html>
