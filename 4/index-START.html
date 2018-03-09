@@ -46,6 +46,9 @@
    // console.log(oo);
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    alert(document.body.textContent);
+    // console.log(typeof document);
+    console.log(document);
     const fifty = inventors.filter(inventor=>(inventor.year >= 1500 && inventor.year <1600));
     console.table(fifty);
     // Array.prototype.map()
@@ -90,8 +93,53 @@
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck','tread' ];
+    const transportation = data.reduce(function(obj,item){
+       if(!obj[item]){
+           obj[item] =0;
+       }
+        obj[item]++;
+       return obj;
+    },{});
+    console.log(transportation);
+    const movement = data.reduce(function(obj,item){
+       if(item in obj){
+           obj[item]++;
+       }
+       else{
+           obj[item] =1;
+       }
+       return obj;
+    },{});
+    console.log(movement);
+    var countedNames = data.reduce(function (allNames, name) {
+        if (name in allNames) {
+            allNames[name]++;
+        }
+        else {
+            allNames[name] = 1;
+        }
+        return allNames;
+    }, {});
+    console.log(countedNames);
+    namess['Alice']=1;
+    console.log(namess);
+    $countedNames = names.reduce(function(a,b){
+      console.log(typeof a);
+      console.log(typeof b);
+      return a;
+    },{});
 
+     var concat =[[0, 1], [2, 3], [4, 5]].reduce(function(a,b){
+        return a+b;
+     },{});
+     console.log(concat);
+    var flattened = [[0, 1], [2, 3], [4, 5]].reduce(
+        function(accumulator, currentValue) {
+            return accumulator.concat(currentValue);
+        },
+        []
+    );console.log(flattened);
   </script>
 </body>
 </html>
